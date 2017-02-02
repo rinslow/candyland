@@ -54,7 +54,7 @@ class Queue(Immutable):
     def top(self):
         return self._list[0]
 
-    def count(self):
+    def __len__(self):
         return len(self._list)
 
 
@@ -78,8 +78,8 @@ class Stack(Immutable):
     def pop(self):
         return Stack(self._list[1:])
 
-    def count(self):
-        return len(self._list)
-
     def head(self):
         return self._list[0]
+
+    def __len__(self):
+        return len(self._list)
