@@ -6,25 +6,38 @@ import unittest
 class ImmutabilityTest(unittest.TestCase):
 
     class ImmutableStub(immutable.Immutable):
-        def __init__(self):
+        def __init__(self, val=0, val2=3):
             super(ImmutabilityTest.ImmutableStub, self).__init__()
-            self.num = 0
+            self.num = val
+            self.num2 = val2
 
         def foo(self):
             pass
 
     def test_cannot_change_properties(self):
         with self.assertRaises(immutable.ImmutabilityException):
-            queue_stub = ImmutabilityTest.ImmutableStub()
-            queue_stub.num = 1
+            stub = ImmutabilityTest.ImmutableStub()
+            stub.num = 1
 
     def test_can_access_methods(self):
-        queue_stub = ImmutabilityTest.ImmutableStub()
+        stub = ImmutabilityTest.ImmutableStub()
         try:
-            queue_stub.foo()
+            stub.foo()
 
         except immutable.ImmutabilityException:
-            pass
+            self.fail()
+
+    def test_equality_by_state(self):
+        stub1 = ImmutabilityTest.ImmutableStub(5, 4)
+        stub2 = ImmutabilityTest.ImmutableStub(5, 4)
+
+        self.assertEqual(stub1, stub2)
+
+    def test_inequality_by_state(self):
+        stub1 = ImmutabilityTest.ImmutableStub(5, 4)
+        stub2 = ImmutabilityTest.ImmutableStub(5, 3)
+
+        self.assertNotEqual(stub1, stub2)
 
 
 class QueueTest(unittest.TestCase):

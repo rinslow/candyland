@@ -18,6 +18,12 @@ class Immutable(object):
         self.__dict__[key] = value
         self.changed_values[key] = True
 
+    def __eq__(self, other):
+        return hash(self) == hash(other)
+
+    def __hash__(self):
+        return hash(self.__class__.__name__ + "@" + str(self.__dict__))
+
 
 class ImmutabilityException(Exception):
     """Occurs when trying to change an immutable object."""
@@ -31,7 +37,7 @@ class Queue(Immutable):
     """
     def __init__(self, queue=NotImplemented, *args):
 
-        # If we're given alot of numbers
+        # If we're given a lot of numbers
         super(Queue, self).__init__()
         if type(queue) is int:
             self._list = [queue] + list(args)
