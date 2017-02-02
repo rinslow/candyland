@@ -55,16 +55,42 @@ class QueueTest(unittest.TestCase):
 
     def test_enqueue(self):
         queue = immutable.Queue(1, 2, 3).enqueue(4)
-        self.assertEqual(queue.count(), 4)
+        self.assertEqual(queue.top(), 1)
 
     def test_dequeue(self):
         queue = immutable.Queue(1, 2, 3).dequeue()
-        self.assertEqual(queue.count(), 2)
+        self.assertEqual(queue.top(), 2)
 
     def test_top(self):
         queue = immutable.Queue(1, 2, 3)
-        self.assertEqual(queue.top(), 3)
+        self.assertEqual(queue.top(), 1)
 
     def test_count(self):
         queue = immutable.Queue(1, 2, 3)
         self.assertEqual(queue.count(), 3)
+
+
+class StackTest(unittest.TestCase):
+    def test_count(self):
+        self.assertEqual(immutable.Stack(1, 2, 3, 4).count(), 4)
+
+    def test_head(self):
+        self.assertEqual(immutable.Stack(1, 2, 3, 4).head(), 1)
+
+    def test_push(self):
+        self.assertEqual(immutable.Stack(1, 2, 3).push(0).head(), 0)
+
+    def test_pop(self):
+        self.assertEqual(immutable.Stack(1, 2, 3).pop().head(), 2)
+
+    def test_init_empty(self):
+        stack = immutable.Stack()
+        self.assertEqual(stack.count(), 0)
+
+    def test_init_lot_of_numbers(self):
+        stack = immutable.Stack(1, 2, 3)
+        self.assertEqual(stack.count(), 3)
+
+    def test_init_queue(self):
+        stack = immutable.Stack([1, 2, 3])
+        self.assertEqual(stack.count(), 3)
