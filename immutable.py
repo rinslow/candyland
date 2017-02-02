@@ -38,7 +38,6 @@ class Queue(Immutable):
     def __init__(self, queue=NotImplemented, *args):
         super(Queue, self).__init__()
 
-        # If we're given a lot of numbers
         if type(queue) is int:
             self._list = [queue] + list(args)
 
