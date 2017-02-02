@@ -5,6 +5,25 @@ Immutable Data Structures for python, for better OOP Programming and Safer Multi
   - Queue
   - Stack
 
+## Usage
+### Stack
+```python
+from immutable import Stack
+s = Stack(1, 2, 3)  # Can also: s = Stack() or s = Stack([1, 2, 3])
+print s.push(7).head()  # Prints 7
+print s.pop().head()  # Prints 2
+print s.count()  # Prints 3
+```
+
+### Queue
+```python
+from immutable import Queue
+q = Queue(1, 2, 3)  # Can also: q = Queue() or q = Queue([1, 2, 3])
+print q.enqueue(7).head()  # Prints 1
+print q.pop().head()  # Prints 1
+print q.count()  # Prints 3
+```
+
 &nbsp;
 &nbsp;
 &nbsp;
