@@ -19,8 +19,8 @@ print s.count()  # Prints 3
 ```python
 from immutable import Queue
 q = Queue(1, 2, 3)  # Can also: q = Queue() or q = Queue([1, 2, 3])
-print q.enqueue(7).head()  # Prints 1
-print q.pop().head()  # Prints 1
+print q.enqueue(7).top()  # Prints 1
+print q.dequeue().top()  # Prints 1
 print q.count()  # Prints 3
 ```
 
