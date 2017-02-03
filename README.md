@@ -8,6 +8,7 @@ Immutable Data Structures for python, for better OOP Programming and Safer Multi
   - Queue
   - Stack
   - List
+
 ## Usage
 
 ### Stack
