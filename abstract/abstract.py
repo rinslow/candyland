@@ -2,6 +2,9 @@
 from immutable import Immutable
 
 
+COLLECTIONS = (list, tuple, set, frozenset)
+
+
 class Queue(Immutable):
     """Immutable queue.
 
@@ -11,7 +14,7 @@ class Queue(Immutable):
     def __init__(self, queue=NotImplemented, *args):
         super(Queue, self).__init__()
 
-        if type(queue) is int:
+        if type(queue) not in COLLECTIONS and queue is not NotImplemented:
             self._list = [queue] + list(args)
 
         else:
@@ -44,7 +47,7 @@ class Stack(Immutable):
     """
     def __init__(self, stack=NotImplemented, *args):
         super(Stack, self).__init__()
-        if type(stack) is int:
+        if type(stack) not in COLLECTIONS and stack is not NotImplemented:
             self._list = [stack] + list(args)
 
         else:
@@ -77,7 +80,7 @@ class List(Immutable):
     """
     def __init__(self, _list=NotImplemented, *args):
         super(List, self).__init__()
-        if type(_list) is int:
+        if type(_list) not in COLLECTIONS and _list is not NotImplemented:
             self._list = [_list] + list(args)
 
         else:
@@ -153,3 +156,22 @@ class KeyValuePair(Immutable):
 
     def value(self):
         return self._value
+
+
+class Dictionary(Immutable, dict):
+    """Immutable dictionary.
+
+    Attributes:
+        _dict (dict): dictionary's implementation.
+    """
+    def __init__(self, var=NotImplemented):
+        super(Dictionary, self).__init__()
+        if type(var) is dict:
+            self._dict = var
+
+        elif isinstance(var, (list, tuple, List)):
+            #  We'll assume we've got a list of KeyValuePair.
+            self._dict = dict(((pair.key(), pair.value()) for pair in var))
+
+        elif var is NotImplemented:
+            self._dict = dict()

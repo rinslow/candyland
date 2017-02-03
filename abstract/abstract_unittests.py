@@ -1,10 +1,9 @@
-from abstract import Queue, Stack, List, KeyValuePair
+from abstract import Queue, Stack, List, KeyValuePair, Dictionary
 
 import unittest
 
 
 class QueueTest(unittest.TestCase):
-
     def test_different_inits_equal(self):
         q1 = Queue(1, 2)
         q2 = Queue().enqueue(1).enqueue(2)
@@ -157,3 +156,24 @@ class KeyValuePairTest(unittest.TestCase):
         kvp = KeyValuePair("Hello", "World")
         self.assertEqual(kvp.key(), "Hello")
         self.assertEqual(kvp.value(), "World")
+
+
+class DictionaryTest(unittest.TestCase):
+    def test_init_empty(self):
+        self.assertEqual(Dictionary(), Dictionary())
+        self.assertEqual(Dictionary()._dict, dict())
+
+    def test_init_dictionary(self):
+        self.assertEqual(Dictionary({1: 2, 3: 4}), Dictionary({1: 2, 3: 4}))
+        self.assertEqual(Dictionary({1: 2, 3: 4})._dict, {1: 2, 3: 4})
+
+    def test_init_kvp_list(self):
+        list1 = [KeyValuePair(1, 2), KeyValuePair(3, 4)]
+        list2 = (KeyValuePair(1, 2), KeyValuePair(3, 4))
+        list3 = List(KeyValuePair(1, 2), KeyValuePair(3, 4))
+
+        expected_dict = {1: 2, 3: 4}
+
+        self.assertEqual(Dictionary(list1)._dict, expected_dict)
+        self.assertEqual(Dictionary(list2)._dict, expected_dict)
+        self.assertEqual(Dictionary(list3)._dict, expected_dict)
