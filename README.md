@@ -2,7 +2,22 @@
 
 
 # candyland
-Immutable Data Structures for python, for better OOP Programming and Safer Multi-threading.
+Immutable Data Structures for python.
+
+### Why Should Objects Be Immutable?
+This is an incomplete list of arguments in favor of immutability:
+
+* immutable objects are simpler to construct, test, and use
+* truly immutable objects are always thread-safe
+* they help to avoid temporal coupling
+* their usage is side-effect free (no defensive copies)
+* identity mutability problem is avoided
+* they always have failure atomicity
+* they are much easier to cache
+* they prevent NULL references, which are bad
+
+(Taken from [Yegor Bugayenko's blog](http://www.yegor256.com/2014/06/09/objects-should-be-immutable.html).)
+
 
 ## Currently Supported Data Structures
   - Queue
