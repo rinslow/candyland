@@ -1,3 +1,6 @@
+![Candyland Sativa](http://i.imgur.com/pznIBJe.png)
+
+
 # candyland
 Immutable Data Structures for python, for better OOP Programming and Safer Multi-threading.
 
@@ -19,8 +22,8 @@ print s.count()  # Prints 3
 ```python
 from immutable import Queue
 q = Queue(1, 2, 3)  # Can also: q = Queue() or q = Queue([1, 2, 3])
-print q.enqueue(7).top()  # Prints 1
-print q.dequeue().top()  # Prints 1
+print q.enqueue(7).head()  # Prints 1
+print q.pop().head()  # Prints 1
 print q.count()  # Prints 3
 ```
 
@@ -30,3 +33,4 @@ print q.count()  # Prints 3
 &nbsp;
 &nbsp;
 ####  candyland's True Immutability stems from it's ability to equate based on an object's state and not by it's reference.
+![](http://i.imgur.com/rWlnEwy.png)
