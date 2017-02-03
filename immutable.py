@@ -26,3 +26,4 @@ class Immutable(object):
 
 class ImmutabilityException(Exception):
     """Occurs when trying to change an immutable object."""
+    pass
