@@ -10,18 +10,18 @@ Immutable Data Structures for python, for better OOP Programming and Safer Multi
   - List
 
 ## Upcoming:
-  - <strike> Queue </strike>
-  - <strike> Stack </strike>
-  - <strike> List </strike>
-  - Set
-  - PriorityQueue
-  - LinkedList
-  - SortedList
-  - AVLTree
-  - BinarySearchTree
-  - RedBlackTree
-  - Heap
-  - HashMap
+  1. <strike> Queue </strike>
+  2. <strike> Stack </strike>
+  3. <strike> List </strike>
+  4. Set
+  5. PriorityQueue
+  6. LinkedList
+  7. SortedList
+  8. AVLTree
+  9. BinarySearchTree
+  10. RedBlackTree
+  11. Heap
+  12. HashMap
 
 * For suggestion you can [mail](mailto:speakupness@gmail.com) us
 * Suggestions taken from [Wikipedia's Data Structures](https://en.wikipedia.org/wiki/List_of_data_structures#Linear_data_structures)
