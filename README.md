@@ -24,7 +24,7 @@ Immutable Data Structures for python, for better OOP Programming and Safer Multi
   12. HashMap
 
 * For suggestion you can [mail](mailto:speakupness@gmail.com) us
-* Suggestions taken from [Wikipedia's Data Structures](https://en.wikipedia.org/wiki/List_of_data_structures#Linear_data_structures)
+* Suggestions taken from [Wikipedia's Data Structures](https://en.wikipedia.org/wiki/List_of_data_structures)
 
 ## Usage
 
