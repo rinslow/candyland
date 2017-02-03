@@ -28,6 +28,7 @@ This is an incomplete list of arguments in favor of immutability:
   1. <strike> Queue </strike>
   2. <strike> Stack </strike>
   3. <strike> List </strike>
+  4. KeyValuePair
   4. Set
   5. PriorityQueue
   6. LinkedList
