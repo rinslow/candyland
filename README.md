@@ -1,5 +1,7 @@
 # candyland
 ![Candyland Sativa](https://d3ix816x6wuc0d.cloudfront.net/Sativa/candyland/badge?width=100)
+&nbsp;
+
 Immutable Data Structures for python, for better OOP Programming and Safer Multi-threading.
 
 ## Currently Supported Data Structures
