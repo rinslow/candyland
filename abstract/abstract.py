@@ -136,10 +136,20 @@ class List(Immutable):
         return str(self._list)
 
 
-class Dictionary(Immutable):
-    """Immutable dictionary.
+class KeyValuePair(Immutable):
+    """Immutable key-value pair.
 
     Attributes:
-        _dict (dict): dictionary's implementation.
+        _key (object): pair's key.
+         _value (object): pair's value.
     """
-    pass
+    def __init__(self, key, value):
+        super(KeyValuePair, self).__init__()
+        self._key = key
+        self._value = value
+
+    def key(self):
+        return self._key
+
+    def value(self):
+        return self._value

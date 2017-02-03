@@ -1,4 +1,4 @@
-from abstract import Queue, Stack, List
+from abstract import Queue, Stack, List, KeyValuePair
 
 import unittest
 
@@ -150,3 +150,10 @@ class ListTest(unittest.TestCase):
 
     def test_str(self):
         self.assertEqual(str(List(2, 1, 3)), str([2, 1, 3]))
+
+
+class KeyValuePairTest(unittest.TestCase):
+    def test_pair(self):
+        kvp = KeyValuePair("Hello", "World")
+        self.assertEqual(kvp.key(), "Hello")
+        self.assertEqual(kvp.value(), "World")
