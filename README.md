@@ -9,6 +9,20 @@ Immutable Data Structures for python, for better OOP Programming and Safer Multi
   - Stack
   - List
 
+## Upcoming:
+  - <strike> Queue </strike>
+  - <strike> Stack </strike>
+  - <strike> List </strike>
+  - Set
+  - PriorityQueue
+  - LinkedList
+  - SortedList
+  - AVLTree
+  - BinarySearchTree
+  - RedBlackTree
+  - Heap
+  - HashMap
+
 ## Usage
 
 ### Stack
