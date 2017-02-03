@@ -9,6 +9,7 @@ Immutable Data Structures for python, for better OOP Programming and Safer Multi
   - Stack
   - List
 ## Usage
+
 ### Stack
 ```python
 from immutable.abstract import Stack
