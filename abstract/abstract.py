@@ -32,6 +32,9 @@ class Queue(Immutable):
     def __str__(self):
         return str(self._list)
 
+    def __iter__(self):
+        return iter(self._list)
+
 
 class Stack(Immutable):
     """Immutable stack.
@@ -61,6 +64,9 @@ class Stack(Immutable):
 
     def __str__(self):
         return str(self._list)
+
+    def __iter__(self):
+        return iter(self._list)
 
 
 class List(Immutable):
