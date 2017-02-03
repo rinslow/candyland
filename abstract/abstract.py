@@ -134,3 +134,12 @@ class List(Immutable):
 
     def __str__(self):
         return str(self._list)
+
+
+class Dictionary(Immutable):
+    """Immutable dictionary.
+
+    Attributes:
+        _dict (dict): dictionary's implementation.
+    """
+    pass
