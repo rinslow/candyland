@@ -20,7 +20,7 @@ class Queue(Immutable):
             self._list = [queue] + list(args)
 
         else:
-            self._list = queue if queue is not NotImplemented else []
+            self._list = copy.copy(queue) if queue is not NotImplemented else []
 
     def enqueue(self, obj):
         return Queue(self._list + [obj])
@@ -53,7 +53,7 @@ class Stack(Immutable):
             self._list = [stack] + list(args)
 
         else:
-            self._list = stack if stack is not NotImplemented else []
+            self._list = copy.copy(stack) if stack is not NotImplemented else []
 
     def push(self, obj):
         return Stack([obj] + self._list)
@@ -86,7 +86,7 @@ class List(Immutable):
             self._list = [_list] + list(args)
 
         else:
-            self._list = _list if _list is not NotImplemented else []
+            self._list = copy.copy(_list) if _list is not NotImplemented else []
 
     def append(self, p_object):
         return List(self._list + [p_object])
@@ -169,14 +169,18 @@ class Dictionary(Immutable):
     def __init__(self, var=NotImplemented):
         super(Dictionary, self).__init__()
         if type(var) is dict:
-            self._dict = var
+            self._dict = var.copy()
 
         elif isinstance(var, (list, tuple, List)):
             #  We'll assume we've got a list of KeyValuePair.
             self._dict = dict(((pair.key(), pair.value()) for pair in var))
 
-        elif var is NotImplemented:
+        elif var is NotImplemented or var is None:
             self._dict = dict()
+
+        else:
+            raise TypeError("Couldn't instansiate Dictionary object with "
+                            "variable of class %s " % type(var).__name__)
 
     def clear(self):
         return Dictionary()
@@ -184,6 +188,7 @@ class Dictionary(Immutable):
     def copy(self):
         return Dictionary(copy.deepcopy(self._dict))
 
+    # noinspection PyMethodOverriding
     @classmethod
     def fromkeys(cls, keys, values=None):
         return cls(dict.fromkeys(keys, values))
@@ -208,3 +213,64 @@ class Dictionary(Immutable):
 
     def to_list(self):
         return [KeyValuePair(k, v) for (k, v) in self._dict.iteritems()]
+
+    def __iter__(self):
+        return self.iterkeys()
+
+    def __len__(self):
+        return len(self._dict.keys())
+
+    def __getitem__(self, item):
+        return self.get(item)
+
+    def __contains__(self, item):
+        return self.has_key(item)
+
+    def __add__(self, other):
+        if isinstance(other, Dictionary):
+            return Dictionary(self._dict.copy()).update(other)
+
+        elif isinstance(other, dict):
+            return Dictionary(self._dict.copy()).update(other)
+
+        else:
+            raise TypeError("Cannot add Dictionary to %s" %
+                            type(other).__name__)
+
+    def __str__(self):
+        return str(self._dict)
+
+    def append(self, key, value):
+        return Dictionary(self._dict).update(Dictionary({key: value}))
+
+    def update(self, other=None):
+        if type(other) is dict:
+            cpy = self._dict.copy()
+            cpy.update(other)
+            return Dictionary(cpy)
+
+        elif type(other) is Dictionary:
+            return self.update(dict(other.items()))
+
+        else:
+            raise TypeError("cannot update Dictionary and %s" % type(other))
+
+    def viewvalues(self):
+        return self._dict.viewvalues()
+
+    def viewkeys(self):
+        return self._dict.viewkeys()
+
+    def viewitems(self):
+        return self._dict.viewitems()
+
+    def setdefault(self, key, default=None):
+        if key in self:
+            return self
+
+        else:
+            return Dictionary(self._dict).append(key, default)
+
+    def pop(self, k):
+        return Dictionary(dict([(key, value) for (key, value) in
+                                self._dict.items() if key != k]))

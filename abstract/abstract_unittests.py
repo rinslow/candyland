@@ -218,3 +218,56 @@ class DictionaryTest(unittest.TestCase):
     def test_tolist(self):
         self.assertEqual(Dictionary({1: 2, 3: 4}).to_list(),
                          [KeyValuePair(1, 2), KeyValuePair(3, 4)])
+
+    def test_iter(self):
+        self.assertEqual(list(iter(Dictionary({1: 2, 3: 4}))), [1, 3])
+
+    def test_len(self):
+        self.assertEqual(len(Dictionary({1: 2, 3: 4})), 2)
+
+    def test_get_item(self):
+        self.assertEqual(Dictionary({1: 2})[1], 2)
+
+    def test_in(self):
+        self.assertTrue(2 in Dictionary({2: 3, 1: 4}))
+
+    def test_plus_dictionary(self):
+        dic1 = Dictionary({1: 2})
+        dic2 = Dictionary({3: 4})
+        expected = Dictionary({1: 2, 3: 4})
+        actual = dic1 + dic2
+
+        self.assertEqual(expected, actual)
+
+    def test_plus_dict(self):
+        dic1 = Dictionary({1: 2})
+        dic2 = {3: 4}
+        expected = Dictionary({1: 2, 3: 4})
+        actual = dic1 + dic2
+
+        self.assertEqual(expected, actual)
+
+    def test_str(self):
+        dic = Dictionary({1: 2, 3: 4})
+        self.assertEqual(str(dic), str({1: 2, 3: 4}))
+
+    def test_append(self):
+        self.assertEqual(Dictionary().append(1, 2), Dictionary({1: 2}))
+
+    def test_update_dict(self):
+        self.assertEqual(Dictionary().update({1: 2}), Dictionary({1: 2}))
+
+    def test_update_dictionary(self):
+        self.assertEqual(Dictionary().update(Dictionary({1: 2})),
+                         Dictionary({1: 2}))
+
+    def test_set_default_has(self):
+        self.assertEqual(Dictionary({1: 2}).setdefault(1, 3),
+                         Dictionary({1: 2}))
+
+    def test_set_default_hasnt(self):
+        self.assertEqual(Dictionary({1: 2}).setdefault(2, 3),
+                         Dictionary({1: 2, 2: 3}))
+
+    def test_pop(self):
+        self.assertEqual(Dictionary({1: 2}).pop(1), Dictionary())
