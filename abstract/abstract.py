@@ -1,4 +1,6 @@
 """Provides immutable data structures for use in python."""
+import copy
+
 from immutable import Immutable
 
 
@@ -158,7 +160,7 @@ class KeyValuePair(Immutable):
         return self._value
 
 
-class Dictionary(Immutable, dict):
+class Dictionary(Immutable):
     """Immutable dictionary.
 
     Attributes:
@@ -175,3 +177,34 @@ class Dictionary(Immutable, dict):
 
         elif var is NotImplemented:
             self._dict = dict()
+
+    def clear(self):
+        return Dictionary()
+
+    def copy(self):
+        return Dictionary(copy.deepcopy(self._dict))
+
+    @classmethod
+    def fromkeys(cls, keys, values=None):
+        return cls(dict.fromkeys(keys, values))
+
+    def get(self, key, default=None):
+        return self._dict.get(key, default)
+
+    def has_key(self, key):
+        return key in self._dict
+
+    def items(self):
+        return copy.deepcopy(self._dict).items()
+
+    def itervalues(self):
+        return iter(copy.deepcopy(self._dict).values())
+
+    def iteritems(self):
+        return copy.deepcopy(self._dict).iteritems()
+
+    def iterkeys(self):
+        return iter(copy.deepcopy(self._dict).keys())
+
+    def to_list(self):
+        return [KeyValuePair(k, v) for (k, v) in self._dict.iteritems()]

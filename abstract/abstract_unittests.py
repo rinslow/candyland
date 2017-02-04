@@ -177,3 +177,44 @@ class DictionaryTest(unittest.TestCase):
         self.assertEqual(Dictionary(list1)._dict, expected_dict)
         self.assertEqual(Dictionary(list2)._dict, expected_dict)
         self.assertEqual(Dictionary(list3)._dict, expected_dict)
+
+    def test_clear(self):
+        self.assertEqual(Dictionary({1: 2}).clear(), Dictionary())
+
+    def test_copy(self):
+        dic = Dictionary({1: 2, 3: 4, 5: {6: 7}})
+        self.assertEqual(dic, dic.copy())
+
+    def test_fromkeys_values(self):
+        actual_dict = Dictionary.fromkeys([1, 2], 0)
+        expected_dict = Dictionary({1: 0, 2: 0})
+        self.assertEqual(actual_dict, expected_dict)
+
+    def test_fromkeys_no_values(self):
+        self.assertEqual(Dictionary.fromkeys([1]), Dictionary({1: None}))
+
+    def test_get_has(self):
+        self.assertEqual(Dictionary({1: 2}).get(1), 2)
+
+    def test_get_hasnt(self):
+        self.assertEqual(Dictionary({1: 2}).get(3, 0), 0)
+
+    def test_has_key(self):
+        self.assertTrue(Dictionary({1: 2, 3: 4}).has_key(3))
+
+    def test_items(self):
+        self.assertEqual(Dictionary({1: 2, 3: 4}).items(), [(1, 2), (3, 4)])
+
+    def test_itervalues(self):
+        self.assertEqual(list(Dictionary({1: 2, 2: 1}).itervalues()), [2, 1])
+
+    def test_iteritems(self):
+                self.assertEqual(list(Dictionary({1: 2, 3: 4}).iteritems()),
+                                 [(1, 2), (3, 4)])
+
+    def test_iterkeys(self):
+        self.assertEqual(list(Dictionary({1: 2, 2: 1}).iterkeys()), [1, 2])
+
+    def test_tolist(self):
+        self.assertEqual(Dictionary({1: 2, 3: 4}).to_list(),
+                         [KeyValuePair(1, 2), KeyValuePair(3, 4)])
