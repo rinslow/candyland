@@ -25,13 +25,14 @@ This is an incomplete list of arguments in favor of immutability:
   - [List](https://en.wikipedia.org/wiki/List_(abstract_data_type))
   - [KeyValuePair](https://en.wikipedia.org/wiki/Attribute%E2%80%93value_pair)
   - [Dictionary (Associative Array)](https://en.wikipedia.org/wiki/Associative_array)
+  - [Set](https://en.wikipedia.org/wiki/Set_(abstract_data_type))
 
 ## Upcoming:
   1. <strike> Queue </strike>
   2. <strike> Stack </strike>
   3. <strike> List </strike>
   4. <strike>KeyValuePair</strike>
-  5. Set
+  5. <strike>Set</strike>
   6. PriorityQueue
   7. LinkedList
   8. SortedList
@@ -85,6 +86,12 @@ print kvp.key(), kvp.value()  # Prints 1, 2
 from immutable.abstract import Dictionary
 d = Dictionary({1:2, 4:5})
 d + Dictionary([KeyValuePair(1, 2), KeyValuePair(3, 4)]).append(4, 5).pop(1) + Dictionary.from_keys([1, 2], 0)
+```
+
+### Set
+```python
+from immutable.abstract import Set
+print 1 in (Set(1, 2, 3) & Set(3, 4, 5) | [1, 2, 0] - [3, 4]).add(9).update(List(3,3)).pop().remove(2)
 ```
 
 &nbsp;
