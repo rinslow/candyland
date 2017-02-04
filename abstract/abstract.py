@@ -291,38 +291,28 @@ class Set(Immutable):
             self._list = list(set(copy.copy(_list)
                                   if _list is not NotImplemented else []))
 
-    def append(self, p_object):
+    def add(self, p_object):
         return Set(list(set(self._list + [p_object])))
 
     def count(self, value):
         return self._list.count(value)
 
-    def index(self, value, start=None, stop=None):
-        for var, index in enumerate(self._list[start:stop]):
-            if var == value:
-                return index
-
-    def insert(self, index, p_object):
-        return Set(list(set(self._list[:index] +
-                            [p_object] +
-                            self._list[index:])))
-
-    def pop(self, index=None):
-        index = index if index is not None else 0
+    def pop(self):
+        index = 0
         return Set([item for (idx, item) in enumerate(self._list)
                     if idx != index])
 
     def remove(self, value):
+        if value not in self:
+            raise KeyError
+
+        return self.discard(value)
+
+    def discard(self, value):
         return Set([item for item in self._list if item != value])
 
-    def extend(self, iterable):
+    def update(self, iterable):
         return Set(list(set(self._list + list(iterable))))
-
-    def reverse(self):
-        return Set(self._list[::-1])
-
-    def sort(self, compareable=None, key=None, reverse=False):
-        return Set(sorted(self._list), compareable, key, reverse)
 
     def __iter__(self):
         return iter(self._list)
@@ -341,3 +331,15 @@ class Set(Immutable):
 
     def __str__(self):
         return str(self._list)
+
+    def __xor__(self, other):
+        pass
+
+    def __or__(self, other):
+        pass
+
+    def __and__(self, other):
+        pass
+
+    def __sub__(self, other):
+        pass
