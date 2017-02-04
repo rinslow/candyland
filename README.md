@@ -20,11 +20,11 @@ This is an incomplete list of arguments in favor of immutability:
 
 
 ## Currently Supported Data Structures
-  - (Queue)[https://en.wikipedia.org/wiki/Queue_(abstract_data_type)]
-  - (Stack)[https://en.wikipedia.org/wiki/Stack_(abstract_data_type)]
-  - (List)[https://en.wikipedia.org/wiki/List_(abstract_data_type)]
-  - (KeyValuePair)[https://en.wikipedia.org/wiki/Attribute%E2%80%93value_pair]
-  - (Dictionary (Associative Array))[https://en.wikipedia.org/wiki/Associative_array]
+  - [Queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))
+  - [Stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
+  - [List](https://en.wikipedia.org/wiki/List_(abstract_data_type))
+  - [KeyValuePair](https://en.wikipedia.org/wiki/Attribute%E2%80%93value_pair)
+  - [Dictionary (Associative Array)](https://en.wikipedia.org/wiki/Associative_array)
 
 ## Upcoming:
   1. <strike> Queue </strike>
