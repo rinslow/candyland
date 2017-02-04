@@ -20,25 +20,27 @@ This is an incomplete list of arguments in favor of immutability:
 
 
 ## Currently Supported Data Structures
-  - Queue
-  - Stack
-  - List
-  - KeyValuePair
+  - (Queue)[https://en.wikipedia.org/wiki/Queue_(abstract_data_type)]
+  - (Stack)[https://en.wikipedia.org/wiki/Stack_(abstract_data_type)]
+  - (List)[https://en.wikipedia.org/wiki/List_(abstract_data_type)]
+  - (KeyValuePair)[https://en.wikipedia.org/wiki/Attribute%E2%80%93value_pair]
+  - (Dictionary (Associative Array))[https://en.wikipedia.org/wiki/Associative_array]
 
 ## Upcoming:
   1. <strike> Queue </strike>
   2. <strike> Stack </strike>
   3. <strike> List </strike>
   4. <strike>KeyValuePair</strike>
-  4. Set
-  5. PriorityQueue
-  6. LinkedList
-  7. SortedList
-  8. AVLTree
-  9. BinarySearchTree
-  10. RedBlackTree
-  11. Heap
-  12. HashMap
+  5. Set
+  6. PriorityQueue
+  7. LinkedList
+  8. SortedList
+  9. AVLTree
+  10. BinarySearchTree
+  11. RedBlackTree
+  12. Heap
+  13. HashTable
+  14. <strike>Dictionary (Associative Array)</strike>
 
 * For suggestion you can [mail](mailto:speakupness@gmail.com) us
 * Suggestions taken from [Wikipedia's Data Structures](https://en.wikipedia.org/wiki/List_of_data_structures)
@@ -69,6 +71,20 @@ from immutable.abstact import List
 l = List(1, 2, 3)
 print 2 in l 
 print l.reverse().append(3).remove(2).extend([1, 2]).pop(1).sort().insert(1, 3).count(3)
+```
+
+### KeyValuePair
+```python
+from immutable.abstact import KeyValuePair
+kvp = KeyValuePair(1, 2)
+print kvp.key(), kvp.value()  # Prints 1, 2
+```
+
+### Dictionary
+```python
+from immutable.abstract import Dictionary
+d = Dictionary({1:2, 4:5})
+d + Dictionary([KeyValuePair(1, 2), KeyValuePair(3, 4)]).append(4, 5).pop(1) + Dictionary.from_keys([1, 2], 0)
 ```
 
 &nbsp;
