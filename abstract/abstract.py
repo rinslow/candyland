@@ -111,7 +111,7 @@ class List(Immutable):
         return List([item for item in self._list if item != value])
 
     def extend(self, iterable):
-        return List(self._list + iterable)
+        return List(self._list + list(iterable))
 
     def reverse(self):
         return List(self._list[::-1])
@@ -316,7 +316,7 @@ class Set(Immutable):
         return Set([item for item in self._list if item != value])
 
     def extend(self, iterable):
-        return Set(list(set(self._list + iterable)))
+        return Set(list(set(self._list + list(iterable))))
 
     def reverse(self):
         return Set(self._list[::-1])

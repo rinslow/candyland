@@ -1,4 +1,4 @@
-from abstract import Queue, Stack, List, KeyValuePair, Dictionary
+from abstract import Queue, Stack, List, KeyValuePair, Dictionary, Set
 
 import unittest
 
@@ -271,3 +271,96 @@ class DictionaryTest(unittest.TestCase):
 
     def test_pop(self):
         self.assertEqual(Dictionary({1: 2}).pop(1), Dictionary())
+
+
+class SetTest(unittest.TestCase):
+    def test_init_empty(self):
+        s = Set()
+        self.assertEqual(len(s), 0)
+
+    def test_init_lot_of_numbers(self):
+        s = Set(1, 2, 3)
+        self.assertEqual(len(s), 3)
+
+    def test_init_s(self):
+        s = Set([1, 2, 3])
+        self.assertEqual(len(s), 3)
+
+    def test_append(self):
+        set1 = Set().append(1).append(2)
+
+        set2 = Set(1, 2)
+        self.assertEqual(set1, set2)
+
+    def test_count(self):
+        s1 = Set(1, 2, 1, 4)
+        self.assertEqual(s1.count(1), 1)
+
+    def test_index(self):
+        s1 = Set(1, 2, 1, 4)
+        self.assertEqual(s1.index(2), 4)
+
+    def test_insert(self):
+        s1 = Set(1, 2, 3)
+        expected_s = Set(1, 7, 2, 3)
+        actual_s = s1.insert(1, 7)
+
+        self.assertEqual(expected_s, actual_s)
+
+    def test_pop(self):
+        s1 = Set(1, 2, 3)
+        expected_s = Set(1, 3)
+        actual_s = s1.pop(1)
+
+        self.assertEqual(expected_s, actual_s)
+
+    def test_pop_empty(self):
+        s1 = Set(1, 2, 3)
+        expected_s = Set(2, 3)
+        actual_s = s1.pop()
+
+        self.assertEqual(expected_s, actual_s)
+
+    def test_remove(self):
+        actual_s = Set(1, 2, 3, 2, 2).remove(3)
+        expected_s = Set(1, 2)
+
+        self.assertEqual(actual_s, expected_s)
+
+    def test_extend(self):
+        actual_s = Set(1, 2).extend([1, 2])
+        self.assertEqual(actual_s, Set(1, 2, 1, 2))
+
+    def test_reverse(self):
+        self.assertEqual(Set(1, 2, 3).reverse(), Set(3, 2, 1))
+
+    def test_sort(self):
+        self.assertEqual(Set(1, 2, 3, 0).sort(), Set(0, 1, 2, 3))
+
+    def test_iter(self):
+        self.assertEqual(list(iter(Set(1, 2, 3))), list(iter([1, 2, 3])))
+
+    def test_add(self):
+        self.assertEqual(Set(1, 2) + Set(3), Set(1, 2, 3))
+
+    def test_in(self):
+        self.assertTrue(1 in Set(2, 1, 2))
+
+    def test_get_item(self):
+        self.assertEqual(Set(2, 1, 3)[2], 3)
+
+    def test_len(self):
+        self.assertEqual(len(Set(2, 1, 3)), 3)
+
+    def test_str(self):
+        self.assertEqual(str(Set(2, 1, 3)), str([1, 2, 3]))
+
+    def test_append_set(self):
+        self.assertEqual(Set(1, 2).append(1), Set(1, 2))
+
+    def test_extend_set(self):
+        self.assertEqual(Set(1, 2).extend(Set(1, 2)), Set(1, 2))
+
+    def test_plus_set(self):
+        self.assertEqual(Set(1, 2) + Set(2, 3), Set(1, 2, 3))
+    
