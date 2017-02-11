@@ -1,4 +1,4 @@
-"""Provides immutable data structures for use in python."""
+"""Provides immutable abstract data structures for use in python."""
 import copy
 
 from immutable import Immutable
