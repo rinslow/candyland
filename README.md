@@ -26,6 +26,7 @@ This is an incomplete list of arguments in favor of immutability:
   - [KeyValuePair](https://en.wikipedia.org/wiki/Attribute%E2%80%93value_pair)
   - [Dictionary (Associative Array)](https://en.wikipedia.org/wiki/Associative_array)
   - [Set](https://en.wikipedia.org/wiki/Set_(abstract_data_type))
+  - [BinaryTree](https://en.wikipedia.org/wiki/Binary_tree)
 
 ## Upcoming:
   1. <strike> Queue </strike>
@@ -42,6 +43,7 @@ This is an incomplete list of arguments in favor of immutability:
   12. Heap
   13. HashTable
   14. <strike>Dictionary (Associative Array)</strike>
+  15. <strike>BinaryTree</strike>
 
 * For suggestion you can [mail](mailto:speakupness@gmail.com) us
 * Suggestions taken from [Wikipedia's Data Structures](https://en.wikipedia.org/wiki/List_of_data_structures)
@@ -92,6 +94,27 @@ d + Dictionary([KeyValuePair(1, 2), KeyValuePair(3, 4)]).append(4, 5).pop(1) + D
 ```python
 from immutable.abstract import Set
 print 1 in (Set(1, 2, 3) & Set(3, 4, 5) | [1, 2, 0] - [3, 4]).add(9).update(List(3,3)).pop().remove(2)
+```
+
+### BinaryTree
+```python
+from immutable.trees import BinaryTree
+tree = BinaryTree(BinaryTree(BinaryTree(None, None, 2),
+                                     BinaryTree(BinaryTree(None,
+                                                           None,
+                                                           5),
+                                                None,
+                                                6),
+                                     4),
+                          BinaryTree(BinaryTree(None,
+                                                None,
+                                                10),
+                                     BinaryTree(BinaryTree(None, None, 15),
+                                                BinaryTree(None, None, 18),
+                                                16),
+                                     13),
+                          8) 
+print tree, repr(tree), 13 in tree, 3.14 in tree, list(tree), iter(tree), tree.add(1).add(2).remove(3).remove(4) 
 ```
 
 &nbsp;
