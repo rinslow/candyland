@@ -3,4 +3,9 @@ from immutable import Immutable
 
 
 class Heap(Immutable):
+    """Immutable heap.
+
+    Attributes:
+
+    """
     pass
