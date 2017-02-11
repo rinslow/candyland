@@ -333,13 +333,13 @@ class Set(Immutable):
         return str(self._list)
 
     def __xor__(self, other):
-        pass
+        return Set(set(self._list).symmetric_difference(other))
 
     def __or__(self, other):
-        pass
+        return self.update(other)
 
     def __and__(self, other):
-        pass
+        return Set(set(self._list).intersection(other))
 
     def __sub__(self, other):
-        pass
+        return Set(set(self._list).difference(other))

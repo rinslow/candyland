@@ -346,3 +346,15 @@ class SetTest(unittest.TestCase):
 
     def test_plus_set(self):
         self.assertEqual(Set(1, 2) + Set(2, 3), Set(1, 2, 3))
+
+    def test_xor(self):
+        self.assertEqual(Set(1, 2, 3) ^ (1, 2, 0), Set(0, 3))
+
+    def test_or(self):
+        self.assertEqual(Set(1, 2, 3) | (1, 2, 0), Set(0, 1, 2, 3))
+
+    def test_and(self):
+        self.assertEqual(Set(1, 2, 3) & (1, 2, 0), Set(1, 2))
+
+    def test_minus(self):
+        self.assertEqual(Set(1, 2, 3) - (1, 2, 0), Set(3))
