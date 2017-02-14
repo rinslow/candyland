@@ -4,7 +4,7 @@ import copy
 from immutable import Immutable
 
 
-COLLECTIONS = (list, tuple, set, frozenset)
+COLLECTIONS = (list, set)
 
 
 class Queue(Immutable):
@@ -141,25 +141,6 @@ class List(Immutable):
         return str(self._list)
 
 
-class KeyValuePair(Immutable):
-    """Immutable key-value pair.
-
-    Attributes:
-        _key (object): pair's key.
-         _value (object): pair's value.
-    """
-    def __init__(self, key, value):
-        super(KeyValuePair, self).__init__()
-        self._key = key
-        self._value = value
-
-    def key(self):
-        return self._key
-
-    def value(self):
-        return self._value
-
-
 class Dictionary(Immutable):
     """Immutable dictionary.
 
@@ -172,8 +153,8 @@ class Dictionary(Immutable):
             self._dict = var.copy()
 
         elif isinstance(var, (list, tuple, List)):
-            #  We'll assume we've got a list of KeyValuePair.
-            self._dict = dict(((pair.key(), pair.value()) for pair in var))
+            #  We'll assume we've got a list of tuples
+            self._dict = dict(list(var))
 
         elif var is NotImplemented or var is None:
             self._dict = dict()
@@ -212,7 +193,7 @@ class Dictionary(Immutable):
         return iter(copy.deepcopy(self._dict).keys())
 
     def to_list(self):
-        return [KeyValuePair(k, v) for (k, v) in self._dict.iteritems()]
+        return [(k, v) for (k, v) in self._dict.iteritems()]
 
     def __iter__(self):
         return self.iterkeys()

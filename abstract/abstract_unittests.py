@@ -1,4 +1,4 @@
-from abstract import Queue, Stack, List, KeyValuePair, Dictionary, Set
+from abstract import Queue, Stack, List, Dictionary, Set
 
 import unittest
 
@@ -150,12 +150,9 @@ class ListTest(unittest.TestCase):
     def test_str(self):
         self.assertEqual(str(List(2, 1, 3)), str([2, 1, 3]))
 
-
-class KeyValuePairTest(unittest.TestCase):
-    def test_pair(self):
-        kvp = KeyValuePair("Hello", "World")
-        self.assertEqual(kvp.key(), "Hello")
-        self.assertEqual(kvp.value(), "World")
+    def test_iter_identity_with_dict(self):
+        a = List((4, 4), (5, 5))
+        self.assertEqual(dict(list(a)), {4: 4, 5: 5})
 
 
 class DictionaryTest(unittest.TestCase):
@@ -168,9 +165,9 @@ class DictionaryTest(unittest.TestCase):
         self.assertEqual(Dictionary({1: 2, 3: 4})._dict, {1: 2, 3: 4})
 
     def test_init_kvp_list(self):
-        list1 = [KeyValuePair(1, 2), KeyValuePair(3, 4)]
-        list2 = (KeyValuePair(1, 2), KeyValuePair(3, 4))
-        list3 = List(KeyValuePair(1, 2), KeyValuePair(3, 4))
+        list1 = [(1, 2), (3, 4)]
+        list2 = ((1, 2), (3, 4))
+        list3 = List((1, 2), (3, 4))
 
         expected_dict = {1: 2, 3: 4}
 
@@ -217,7 +214,7 @@ class DictionaryTest(unittest.TestCase):
 
     def test_tolist(self):
         self.assertEqual(Dictionary({1: 2, 3: 4}).to_list(),
-                         [KeyValuePair(1, 2), KeyValuePair(3, 4)])
+                         [(1, 2), (3, 4)])
 
     def test_iter(self):
         self.assertEqual(list(iter(Dictionary({1: 2, 3: 4}))), [1, 3])
