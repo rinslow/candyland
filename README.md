@@ -122,7 +122,7 @@ print tree, repr(tree), 13 in tree, 3.14 in tree, list(tree), iter(tree), tree.a
 ```python
 from immutable.trres import Heap
 
-h = Heap.make([1, 2, 3, 4, 5, 6, 10, 14, 11, 0, -2), min)  # second parameter is an optional comparator, default is max.
+h = Heap.make([1, 2, 3, 4, 5, 6, 10, 14, 11, 0, -2], min)  # second parameter is an optional comparator, default is max.
 print h.add(1).pop(3).pop(4).add(20).head()
 ```
 
