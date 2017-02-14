@@ -1,6 +1,6 @@
 import unittest
 
-from trees import BinaryTree
+from trees import BinaryTree, Heap
 
 
 class BinaryTreeTest(unittest.TestCase):
@@ -149,26 +149,58 @@ class BinaryTreeTest(unittest.TestCase):
 
 
 class HeapTest(unittest.TestCase):
-    def test_init_alot_of_numbers(self):
-        pass
 
-    def test_init_empty(self):
-        pass
+    def test_empty_init(self):
+        h = Heap()
+        self.assertEqual(h.comparator, max)
+        self.assertEqual(h.array, list())
 
-    def test_init_list(self):
-        pass
+    def test_normal_init(self):
+        h = Heap([1, 2, 3], min)
+        self.assertEqual(h.array, [1, 2, 3])
+        self.assertEqual(h.comparator, min)
 
-    def test_init_abstract_data_type(self):
-        pass
+    def test_head(self):
+        self.assertEqual(Heap([3, 2, 1]).head(), 3)
 
-    def test_insert(self):
-        pass
+    def test_add_smaller_than_maximum(self):
+        self.assertEqual(Heap([1], max).add(0).head(), 1)
 
-    def test_remove(self):
-        pass
+    def test_add_larger_than_maximum(self):
+        self.assertEqual(Heap([1], max).add(2).head(), 2)
 
-    def test_find_maximum(self):
-        pass
+    def test_add_equal_to_maximum(self):
+        self.assertEqual(Heap([2], max).add(2).head(), 2)
 
-    def test_delete_maximum(self):
-        pass
+    def test_pop(self):
+        self.assertEqual(Heap.make([1, 2, 3, 4, 0]).pop().head(), 3)
+
+    def test_iter(self):
+        lst = [432, 431, 543, 3241, 44]
+
+        self.assertEqual(list(Heap.make(lst)), sorted(lst, reverse=True))
+
+    def test_len(self):
+        self.assertEqual(len(Heap([1, 2, 3])), 3)
+
+    def test_in(self):
+        self.assertIn(5, Heap([6, 2, 1, 5]))
+
+    def test_str(self):
+        self.assertEqual(str(Heap([6, 1, 2])), str([6, 1, 2]))
+
+    def test_repr(self):
+        h = Heap([6, 3, 2, 1, 1, 1])
+        print repr(h)
+        self.assertTrue(eval(repr(h)) == h)
+
+    def test_sift_up_even_pos(self):
+        h = Heap([5, 4, 3, 2, 7]).sift_up(4)
+        self.assertEqual(h.head(), 7)
+
+    def test_sift_odd_pos(self):
+        h = Heap([10, 8, 3, 2, 7, 4]).sift_up(5)
+        self.assertEqual(h.array[5], 3)
+
+    def test_make(self):
+        self.assertEqual(Heap.make([2, 1, 0, 1, 9, 9, 7]).head(), 9)
