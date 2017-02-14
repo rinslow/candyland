@@ -23,7 +23,6 @@ This is an incomplete list of arguments in favor of immutability:
   - [Queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))
   - [Stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
   - [List](https://en.wikipedia.org/wiki/List_(abstract_data_type))
-  - [KeyValuePair](https://en.wikipedia.org/wiki/Attribute%E2%80%93value_pair)
   - <b>[Dictionary (Associative Array)](https://en.wikipedia.org/wiki/Associative_array)</b>
   - <b>[Set](https://en.wikipedia.org/wiki/Set_(abstract_data_type))</b>
   - <b>[BinaryTree](https://en.wikipedia.org/wiki/Binary_tree)</b>
@@ -33,7 +32,7 @@ This is an incomplete list of arguments in favor of immutability:
   1. <strike> Queue </strike>
   2. <strike> Stack </strike>
   3. <strike> List </strike>
-  4. <strike>KeyValuePair</strike>
+  4. <strike>KeyValuePair</strike> (Who needs a key-value pair in python? ;))
   5. <strike>Set</strike>
   6. PriorityQueue
   7. LinkedList
@@ -77,18 +76,11 @@ print 2 in l
 print l.reverse().append(3).remove(2).extend([1, 2]).pop(1).sort().insert(1, 3).count(3)
 ```
 
-### KeyValuePair
-```python
-from immutable.abstact import KeyValuePair
-kvp = KeyValuePair(1, 2)
-print kvp.key(), kvp.value()  # Prints 1, 2
-```
-
 ### Dictionary
 ```python
 from immutable.abstract import Dictionary
 d = Dictionary({1:2, 4:5})
-d + Dictionary([KeyValuePair(1, 2), KeyValuePair(3, 4)]).append(4, 5).pop(1) + Dictionary.from_keys([1, 2], 0)
+d + Dictionary([(1, 2), (3, 4)]).append(4, 5).pop(1) + Dictionary.from_keys([1, 2], 0)
 ```
 
 ### Set
