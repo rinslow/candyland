@@ -24,10 +24,10 @@ This is an incomplete list of arguments in favor of immutability:
   - [Stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
   - [List](https://en.wikipedia.org/wiki/List_(abstract_data_type))
   - [KeyValuePair](https://en.wikipedia.org/wiki/Attribute%E2%80%93value_pair)
-  - [Dictionary (Associative Array)](https://en.wikipedia.org/wiki/Associative_array)
-  - [Set](https://en.wikipedia.org/wiki/Set_(abstract_data_type))
-  - [BinaryTree](https://en.wikipedia.org/wiki/Binary_tree)
-  - [Heap](https://en.wikipedia.org/wiki/Heap_(data_structure))
+  - <b>[Dictionary (Associative Array)](https://en.wikipedia.org/wiki/Associative_array)</b>
+  - <b>[Set](https://en.wikipedia.org/wiki/Set_(abstract_data_type))</b>
+  - <b>[BinaryTree](https://en.wikipedia.org/wiki/Binary_tree)</b>
+  - <b>[Heap](https://en.wikipedia.org/wiki/Heap_(data_structure))</b>
 
 ## Upcoming:
   1. <strike> Queue </strike>
