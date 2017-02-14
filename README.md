@@ -27,6 +27,7 @@ This is an incomplete list of arguments in favor of immutability:
   - [Dictionary (Associative Array)](https://en.wikipedia.org/wiki/Associative_array)
   - [Set](https://en.wikipedia.org/wiki/Set_(abstract_data_type))
   - [BinaryTree](https://en.wikipedia.org/wiki/Binary_tree)
+  - [Heap](https://en.wikipedia.org/wiki/Heap_(data_structure))
 
 ## Upcoming:
   1. <strike> Queue </strike>
@@ -40,7 +41,7 @@ This is an incomplete list of arguments in favor of immutability:
   9. AVLTree
   10. BinarySearchTree
   11. RedBlackTree
-  12. Heap
+  12. <strike>Heap</strike>
   13. HashTable
   14. <strike>Dictionary (Associative Array)</strike>
   15. <strike>BinaryTree</strike>
@@ -115,6 +116,14 @@ tree = BinaryTree(BinaryTree(BinaryTree(None, None, 2),
                                      13),
                           8) 
 print tree, repr(tree), 13 in tree, 3.14 in tree, list(tree), iter(tree), tree.add(1).add(2).remove(3).remove(4) 
+```
+
+### Heap
+```python
+from immutable.trres import Heap
+
+h = Heap.make([1, 2, 3, 4, 5, 6, 10, 14, 11, 0, -2), min)  # second parameter is an optional comparator, default is max.
+print h.add(1).pop(3).pop(4).add(20).head()
 ```
 
 &nbsp;
