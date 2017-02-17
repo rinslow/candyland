@@ -20,30 +20,30 @@ This is an incomplete list of arguments in favor of immutability:
 
 
 ## Currently Supported Data Structures
-  - [Queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))
-  - [Stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type))
-  - [List](https://en.wikipedia.org/wiki/List_(abstract_data_type))
-  - <b>[Dictionary (Associative Array)](https://en.wikipedia.org/wiki/Associative_array)</b>
-  - <b>[Set](https://en.wikipedia.org/wiki/Set_(abstract_data_type))</b>
-  - <b>[BinaryTree](https://en.wikipedia.org/wiki/Binary_tree)</b>
-  - <b>[Heap](https://en.wikipedia.org/wiki/Heap_(data_structure))</b>
+  - [Queue](https://github.com/d-kiss/candyland/blob/master/abstract/queue.py)
+  - [Stack](https://github.com/d-kiss/candyland/blob/master/abstract/stack.py)
+  - [List](https://github.com/d-kiss/candyland/blob/master/abstract/list.py)
+  - [Dictionary (Associative Array)](https://github.com/d-kiss/candyland/blob/master/abstract/dictionary.py)
+  - [Set](https://github.com/d-kiss/candyland/blob/master/abstract/set.py)
+  - [BinaryTree](https://github.com/d-kiss/candyland/blob/master/trees/binary_tree.py)
+  - [Heap](https://github.com/d-kiss/candyland/blob/master/trees/heap.py)
 
 ## Upcoming:
-  1. <strike> Queue </strike>
-  2. <strike> Stack </strike>
-  3. <strike> List </strike>
+  1. <strike> [Queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))  </strike>
+  2. <strike> [Stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) </strike>
+  3. <strike> [List](https://en.wikipedia.org/wiki/List_(abstract_data_type)) </strike>
   4. <strike>KeyValuePair</strike> (Who needs a key-value pair in python? ;))
-  5. <strike>Set</strike>
+  5. <strike>[Set](https://en.wikipedia.org/wiki/Set_(abstract_data_type))</strike>
   6. PriorityQueue
   7. LinkedList
   8. SortedList
   9. AVLTree
   10. BinarySearchTree
   11. RedBlackTree
-  12. <strike>Heap</strike>
+  12. <strike>[Heap](https://en.wikipedia.org/wiki/Heap_(data_structure))</strike>
   13. HashTable
-  14. <strike>Dictionary (Associative Array)</strike>
-  15. <strike>BinaryTree</strike>
+  14. <strike>[Dictionary](https://en.wikipedia.org/wiki/Associative_array)</strike>
+  15. <strike>[BinaryTree](https://en.wikipedia.org/wiki/Binary_tree)</strike>
 
 * For suggestion you can [mail](mailto:speakupness@gmail.com) us
 * Suggestions taken from [Wikipedia's Data Structures](https://en.wikipedia.org/wiki/List_of_data_structures)
