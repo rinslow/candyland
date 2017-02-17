@@ -1,6 +1,6 @@
 import unittest
 
-from trees import BinaryTree, Heap
+from trees import BinaryTree, Heap, AVLTree
 
 
 class BinaryTreeTest(unittest.TestCase):
@@ -149,7 +149,6 @@ class BinaryTreeTest(unittest.TestCase):
 
 
 class HeapTest(unittest.TestCase):
-
     def test_empty_init(self):
         h = Heap()
         self.assertEqual(h.comparator, max)
@@ -203,3 +202,109 @@ class HeapTest(unittest.TestCase):
 
     def test_make(self):
         self.assertEqual(Heap.make([2, 1, 0, 1, 9, 9, 7]).head(), 9)
+
+
+class AVLTreeTest(unittest.TestCase):
+    def test_init(self):
+        avl = AVLTree(0, None, None)
+        self.assertEqual(avl.height, 1)
+
+        avl = AVLTree(0, AVLTree(None, None, None), None)
+        self.assertEqual(avl.height, 2)
+
+        avl = AVLTree(0, AVLTree(None, None, None), AVLTree(None, None, None))
+        self.assertEqual(avl.height, 2)
+
+        avl = AVLTree(None, AVLTree(None, AVLTree(None, None, None), None),
+                      AVLTree(None, None, None))
+        self.assertEqual(avl.height, 3)
+
+    def test_init_empty(self):
+        pass
+
+    def test_add(self):
+        avl = AVLTree(50, AVLTree(17, AVLTree(12, None, None), AVLTree(23,
+                                                                       None,
+                                                                       None)),
+                      AVLTree(72, AVLTree(54, None, None),
+                              AVLTree(76, None, None)))
+
+        avl.add(4)
+
+    def test_remove(self):
+        pass
+
+    def test_in(self):
+        avl = AVLTree(50, AVLTree(17, AVLTree(12, None, None), AVLTree(23,
+                                                                       None,
+                                                                       None)),
+                      AVLTree(72, AVLTree(54, None, None),
+                              AVLTree(76, None, None)))
+
+        self.assertIn(50, avl)
+        self.assertIn(17, avl)
+        self.assertIn(12, avl)
+        self.assertIn(23, avl)
+        self.assertIn(72, avl)
+        self.assertIn(54, avl)
+        self.assertIn(76, avl)
+
+        self.assertNotIn(200, avl)
+        self.assertNotIn(0, avl)
+
+    def test_str(self):
+        avl = AVLTree(50, AVLTree(17, AVLTree(12, None, None), AVLTree(23,
+                                                                       None,
+                                                                       None)),
+                      AVLTree(72, AVLTree(54, None, None),
+                              AVLTree(76, None, None)))
+
+        self.assertEqual(str(avl), "76,72,54,50,23,17,12")
+
+    def test_repr(self):
+        pass
+
+    def test_iter(self):
+        avl = AVLTree(50, AVLTree(17, AVLTree(12, None, None), AVLTree(23,
+                                                                       None,
+                                                                       None)),
+                      AVLTree(72, AVLTree(54, None, None),
+                              AVLTree(76, None, None)))
+
+        expected_itered = [76, 72, 54, 50, 23, 17, 12]
+        actual_itered = list(avl)
+
+        self.assertTrue(actual_itered, expected_itered)
+
+    def test_cmp(self):
+        avl1 = AVLTree(1, None, None)
+        avl2 = AVLTree(3, None, None)
+        avl3 = AVLTree(3, None, None)
+        self.assertGreater(avl2, avl1)
+        self.assertTrue(not avl2 > avl3)
+        self.assertTrue(not avl2 < avl3)
+        self.assertTrue(avl2 == avl3)
+
+    def test_balance(self):
+        pass
+
+    def test_rotate_left(self):
+        pass
+
+    def test_rotate_right(self):
+        pass
+
+    def test_rotate_double_left(self):
+        pass
+
+    def test_rotate_double_right(self):
+        pass
+
+    def test_search(self):
+        pass
+
+    def test_right_is_heavier(self):
+        pass
+
+    def test_left_is_heavier(self):
+        pass
