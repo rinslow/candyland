@@ -191,7 +191,6 @@ class HeapTest(unittest.TestCase):
 
     def test_repr(self):
         h = Heap([6, 3, 2, 1, 1, 1])
-        print repr(h)
         self.assertTrue(eval(repr(h)) == h)
 
     def test_sift_up_even_pos(self):
