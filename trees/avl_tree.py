@@ -23,15 +23,23 @@ class AVLTree(Immutable):
                                child in [left, right]])
 
     def add(self, element):
-        if element > self.value and self.right is not None:
-            return AVLTree(self.value, self.left,
-                           self.right.add(element)).balance()
+        if element > self.value:
+            if self.right is not None:
+                return AVLTree(self.value, self.left,
+                               self.right.add(element)).balance()
 
-        elif self.left is not None:
-            return AVLTree(self.value, self.left.add(element),
-                           self.right).balance()
+            else:
+                return AVLTree(self.value, self.left, AVLTree(element, None,
+                                                              None)).balance()
 
-        return AVLTree(element, None, None).balance()
+        else:
+            if self.left is not None:
+                return AVLTree(self.value, self.left.add(element),
+                               self.right).balance()
+
+            else:
+                return AVLTree(self.value, AVLTree(element, None, None),
+                               self.right).balance()
 
     def balance(self):
         return self
@@ -92,3 +100,7 @@ class AVLTree(Immutable):
 
     def __cmp__(self, other):
         return cmp(self.value, other.value)
+
+    def __repr__(self):
+        return "%s(%s, %r, %r)" % (self.__class__.__name__,
+                                   self.value, self.left, self.right)

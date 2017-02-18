@@ -223,13 +223,21 @@ class AVLTreeTest(unittest.TestCase):
         pass
 
     def test_add(self):
-        avl = AVLTree(50, AVLTree(17, AVLTree(12, None, None), AVLTree(23,
-                                                                       None,
-                                                                       None)),
-                      AVLTree(72, AVLTree(54, None, None),
-                              AVLTree(76, None, None)))
+        avl = AVLTree(50, AVLTree(17, None, AVLTree(23,
+                                                    None,
+                                                    None)),
+                      AVLTree(72, None,
+                              None))
 
-        avl.add(4)
+        avl = avl.add(13).add(-1).add(100).add(200).add(300).add(40).add(39)
+
+        expected_itered = sorted([50, 17, 23, 72, 13, -1, 100, 200, 300, 40,
+                                  39], reverse=True)
+        actual_itered = list(avl)
+
+        print avl
+
+        self.assertEqual(actual_itered, expected_itered)
 
     def test_remove(self):
         pass
@@ -262,7 +270,13 @@ class AVLTreeTest(unittest.TestCase):
         self.assertEqual(str(avl), "76,72,54,50,23,17,12")
 
     def test_repr(self):
-        pass
+        avl = AVLTree(50, AVLTree(17, AVLTree(12, None, None), AVLTree(23,
+                                                                       None,
+                                                                       None)),
+                      AVLTree(72, AVLTree(54, None, None),
+                              AVLTree(76, None, None)))
+
+        self.assertEqual(eval(repr(avl)), avl)
 
     def test_iter(self):
         avl = AVLTree(50, AVLTree(17, AVLTree(12, None, None), AVLTree(23,
@@ -274,7 +288,7 @@ class AVLTreeTest(unittest.TestCase):
         expected_itered = [76, 72, 54, 50, 23, 17, 12]
         actual_itered = list(avl)
 
-        self.assertTrue(actual_itered, expected_itered)
+        self.assertEqual(actual_itered, expected_itered)
 
     def test_cmp(self):
         avl1 = AVLTree(1, None, None)
