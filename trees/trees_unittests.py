@@ -219,9 +219,6 @@ class AVLTreeTest(unittest.TestCase):
                       AVLTree(None, None, None))
         self.assertEqual(avl.height, 3)
 
-    def test_init_empty(self):
-        pass
-
     def test_add(self):
         avl = AVLTree(50, AVLTree(17, None, AVLTree(23,
                                                     None,
@@ -235,12 +232,20 @@ class AVLTreeTest(unittest.TestCase):
                                   39], reverse=True)
         actual_itered = list(avl)
 
-        print avl
-
         self.assertEqual(actual_itered, expected_itered)
 
-    def test_remove(self):
-        pass
+    def test_pop(self):
+        avl = AVLTree(50, AVLTree(17, AVLTree(12, None, None), AVLTree(23,
+                                                                       None,
+                                                                       None)),
+                      AVLTree(72, AVLTree(54, None, None),
+                              AVLTree(76, None, None)))
+
+        avl = avl.pop(50)
+
+        actual_list = list(avl)
+        expected_list = sorted([17, 12, 23, 72, 54, 76], reverse=True)
+        self.assertEqual(actual_list, expected_list)
 
     def test_in(self):
         avl = AVLTree(50, AVLTree(17, AVLTree(12, None, None), AVLTree(23,
@@ -299,26 +304,32 @@ class AVLTreeTest(unittest.TestCase):
         self.assertTrue(not avl2 < avl3)
         self.assertTrue(avl2 == avl3)
 
-    def test_balance(self):
-        pass
+    def test_is_balanced(self):
+        tree = AVLTree(4, None, None)
+        self.assertTrue(tree.is_balanced())
 
-    def test_rotate_left(self):
-        pass
+        tree = AVLTree(None, AVLTree(None,
+                                     AVLTree(None, None, None), None), None)
+        self.assertFalse(tree.is_balanced())
 
-    def test_rotate_right(self):
-        pass
+        tree = AVLTree(50, AVLTree(17, AVLTree(12, None, None), AVLTree(23,
+                                                                       None,
+                                                                       None)),
+                      AVLTree(72, AVLTree(54, None, None),
+                              AVLTree(76, None, None)))
 
-    def test_rotate_double_left(self):
-        pass
+        self.assertTrue(tree.is_balanced())
 
-    def test_rotate_double_right(self):
-        pass
+    def test_remove_add_balanced(self):
+        tree = AVLTree(4, None, None)
+        tree.add(1).add(2).add(3).add(4).add(7).add(9).pop(4).pop(9).add(
+                20).add(-2).add(21).add(-3).pop(-3)
+
+        self.assertTrue(tree.is_balanced())
 
     def test_search(self):
-        pass
+        avl = AVLTree(1, None, None).add(2).add(3).add(4).add(5).add(-2).add(10)
+        searched_node = avl.search(-2)
+        expected_node = AVLTree(-2, None, None)
 
-    def test_right_is_heavier(self):
-        pass
-
-    def test_left_is_heavier(self):
-        pass
+        self.assertEqual(searched_node, expected_node)
