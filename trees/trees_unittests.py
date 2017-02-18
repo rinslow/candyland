@@ -313,10 +313,10 @@ class AVLTreeTest(unittest.TestCase):
         self.assertFalse(tree.is_balanced())
 
         tree = AVLTree(50, AVLTree(17, AVLTree(12, None, None), AVLTree(23,
-                                                                       None,
-                                                                       None)),
-                      AVLTree(72, AVLTree(54, None, None),
-                              AVLTree(76, None, None)))
+                                                                        None,
+                                                                        None)),
+                       AVLTree(72, AVLTree(54, None, None),
+                               AVLTree(76, None, None)))
 
         self.assertTrue(tree.is_balanced())
 
