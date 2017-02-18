@@ -192,3 +192,11 @@ class AVLTree(Immutable):
             return False
 
         return True
+
+    @classmethod
+    def make(cls, arr):
+        tree = cls(arr[0], None, None)
+        for var in arr[1:]:
+            tree = tree.add(var)
+
+        return tree

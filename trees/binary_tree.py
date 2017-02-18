@@ -106,3 +106,11 @@ class BinaryTree(Immutable):
         if self.right:
             for right_num in self.right:
                 yield right_num
+
+    @classmethod
+    def make(cls, arr):
+        tree = cls(None, None, arr[0])
+        for var in arr[1:]:
+            tree = tree.add(var)
+
+        return tree
