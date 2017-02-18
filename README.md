@@ -109,6 +109,9 @@ tree = BinaryTree(BinaryTree(BinaryTree(None, None, 2),
                                      13),
                           8) 
 print tree, repr(tree), 13 in tree, 3.14 in tree, list(tree), iter(tree), tree.add(1).add(2).remove(3).remove(4) 
+
+for x in BinaryTree.make([1, 2, 3, -1, 4, 7, 9, 14, 8, -23]):
+  print x
 ```
 
 ### Heap
@@ -128,6 +131,8 @@ print h1.add(1).pop(3).pop(4).add(20).head()
 from immutable.trees import AVLTree
 tree = AVLTree(1, None, None)
 print 2 in tree.add(1).add(2).pop(4)
+for x in AVLTree.make([1, 2, 3, -1, 4, 7, 9, 14, 8, -23]):
+  print x
 ```
 
 &nbsp;
