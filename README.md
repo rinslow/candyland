@@ -33,7 +33,7 @@ This is an incomplete list of arguments in favor of immutability:
   1. <strike> [Queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))  </strike>
   2. <strike> [Stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) </strike>
   3. <strike> [List](https://en.wikipedia.org/wiki/List_(abstract_data_type)) </strike>
-  4. <strike>KeyValuePair</strike> (Who needs a key-value pair in python? ;))
+  4. <strike>KeyValuePair</strike> (Who needs a key-value pair in python? <img src='https://www.bleepingcomputer.com/forums/public/style_emoticons/default/huh.gif'/>))
   5. <strike>[Set](https://en.wikipedia.org/wiki/Set_(abstract_data_type))</strike>
   6. [PriorityQueue](https://en.wikipedia.org/wiki/Priority_queue)
   7. [LinkedList](https://en.wikipedia.org/wiki/Linked_list)
