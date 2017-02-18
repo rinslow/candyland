@@ -27,6 +27,7 @@ This is an incomplete list of arguments in favor of immutability:
   - [Set](https://github.com/d-kiss/candyland/blob/master/abstract/set.py)
   - [BinaryTree](https://github.com/d-kiss/candyland/blob/master/trees/binary_tree.py)
   - [Heap](https://github.com/d-kiss/candyland/blob/master/trees/heap.py)
+  - [AVLTree](https://github.com/d-kiss/candyland/blob/master/trees/avl_tree.py)
 
 ## Upcoming:
   1. <strike> [Queue](https://en.wikipedia.org/wiki/Queue_(abstract_data_type))  </strike>
@@ -34,14 +35,14 @@ This is an incomplete list of arguments in favor of immutability:
   3. <strike> [List](https://en.wikipedia.org/wiki/List_(abstract_data_type)) </strike>
   4. <strike>KeyValuePair</strike> (Who needs a key-value pair in python? ;))
   5. <strike>[Set](https://en.wikipedia.org/wiki/Set_(abstract_data_type))</strike>
-  6. PriorityQueue
-  7. LinkedList
-  8. SortedList
-  9. AVLTree
-  10. BinarySearchTree
-  11. RedBlackTree
+  6. [PriorityQueue](https://en.wikipedia.org/wiki/Priority_queue)
+  7. [LinkedList](https://en.wikipedia.org/wiki/Linked_list)
+  8. [SortedList](https://en.wikipedia.org/wiki/Ordered_list)
+  9. <strike>[AVLTree](https://en.wikipedia.org/wiki/AVL_tree)</strike>
+  10. [BinarySearchTree](https://en.wikipedia.org/wiki/Binary_search_tree)
+  11. [RedBlackTree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree)
   12. <strike>[Heap](https://en.wikipedia.org/wiki/Heap_(data_structure))</strike>
-  13. HashTable
+  13. [HashTable](https://en.wikipedia.org/wiki/Hash_table)
   14. <strike>[Dictionary](https://en.wikipedia.org/wiki/Associative_array)</strike>
   15. <strike>[BinaryTree](https://en.wikipedia.org/wiki/Binary_tree)</strike>
 
@@ -112,7 +113,7 @@ print tree, repr(tree), 13 in tree, 3.14 in tree, list(tree), iter(tree), tree.a
 
 ### Heap
 ```python
-from immutable.trres import Heap
+from immutable.trees import Heap
 
 h1 = Heap.make([1, 2, 3, 4, 5, 6, 10, 14, 11, 0, -2], min)  
 h2 = Heap([1, 2, 3], max)
@@ -121,6 +122,12 @@ h3 = Heap([1, 2, 3])
 
 print h1.add(1).pop(3).pop(4).add(20).head()
 ```
+
+### AVLTree
+```python
+from immutable.trees import AVLTree
+tree = AVLTree(1, None, None)
+print 2 in tree.add(1).add(2).pop(4)
 
 &nbsp;
 &nbsp;
